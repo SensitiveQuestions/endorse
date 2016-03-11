@@ -502,7 +502,7 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   }
   where \eqn{l \in \{0, 1, \dots, L_{j} \}, \tau_{0} = -\infty <
     \tau_{1} = 0 < \tau_{2} < \dots < \tau_{L_{j}} = \infty}.
-  \eqn{\alpha_j} and \eqn{\beta_j} are assumed to be positive.
+  \eqn{\beta_j}'s are assumed to be positive.
 
   The model for the support parameter, \eqn{s_{ijk}}, is given by
   if \eqn{T_{ij} \neq 0},
