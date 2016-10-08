@@ -9,6 +9,8 @@ endorse <- function(Y,
                     formula.indiv = NA,
                     hierarchical = FALSE,
                     formula.village = NA,
+                    h = NULL,
+                    group = NULL,
                     x.start = 0,
                     s.start = 0,
                     beta.start = 1,
@@ -76,6 +78,27 @@ endorse <- function(Y,
 
   var.names.indiv <- colnames(cov.mat)
 
+  # auxiliary data check
+  aux.check <- !(is.null(h) & is.null(group)) #aux.check <- !(is.null(h) & is.null(group) & is.null(prediction.unit))
+  
+  # auxiliary data functionality
+  # requires h (vector of auxiliary info), 
+  # group (a vector identifying the groups for which auxiliary info is available), and 
+  # prediction.unit (a vector identifying the units nested within groups for which prediction is desired)
+  
+  if (aux.check == TRUE) {
+    
+    vil.formula <- formula( ~ -1 + factor(group))
+    formula.village <- vil.formula    
+    
+    nu0.omega2 <- 10
+    
+    mu.kappa <- matrix(qt(p = h, df = 10, lower.tail = FALSE))
+    
+    precision.kappa <- 100000
+    
+  }
+  
   #############################################
   ## NEED TO MODIFY
   #############################################
@@ -780,6 +803,12 @@ endorse <- function(Y,
   }
 
   names(res$accept.ratio) <- paste("Q", 1:J, sep = "")
+
+  res$aux <- aux.check
+
+  if(aux.check){
+    res$nh <- length(h)
+  }
 
   return(res)
 }  

@@ -47,11 +47,15 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   }
 
   \item{data.village}{data frame containing the village-level variables.
-    The cases must be complete, i.e., no \code{NA}'s are allowed.
+    The cases must be complete, i.e., no \code{NA}'s are allowed. If 
+    auxiliary information is included, the data frame should include only
+    a unique identifier for each unit for which prediction is desired.
   }
 
   \item{village}{character.  The variable name of the village indicator
-    in the individual-level data.
+    in the individual-level data. If auxiliary information is included,
+    this should correspond to the variable name of the units at which
+    prediction is desired. 
   }
 
   \item{treat}{An optional matrix of non negative integers indicating
@@ -93,6 +97,15 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   \item{formula.village}{a symbolic description specifying the village level 
     covariates for the support parameter and the ideal points. The formula
     should be one-sided, e.g. \code{ ~ V1 + V2}.
+  }
+  
+  \item{h}{Auxiliary data functionality. Optional named numeric vector with 
+  length equal to number of groups. Names correspond to group labels and 
+  values correspond to auxiliary moments.
+  }
+  
+  \item{group}{Auxiliary data functionality. Optional character vector of 
+  group labels with length equal to number of observations.
   }
 
   \item{x.start}{starting values for the ideal points vector \eqn{x}. If
@@ -254,6 +267,10 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   \item{mu.kappa}{the mean of the independent Normal prior on the
     coefficients of village level covariates. Can be either a scalar or a matrix of
     dimension the number of covariates times the number of endorsers.
+    If auxiliary information is included, the value of \code{mu.kappa} 
+    will be computed for each group such that the prior probability of
+    the support parameter taking a positive value is equal to the known
+    value of \code{h}.
     The default is \code{0}.
   }
 
@@ -295,6 +312,8 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
     independent Normal prior on the coefficients of village level covariates
     in the support parameter model. Can be either a scalar or
     a vector of the same length as the dimension of covariates.
+    If auxiliary information is included, the value of \code{precision.kappa} 
+    will be fixed to \code{100000}.
     The default is \code{0.04}.
   }
 
@@ -323,6 +342,8 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   \item{nu0.omega2}{scalar. The degrees of freedom of the independent
     scaled inverse-chi-squared    
     prior for the variance parameter in the support parameter model.
+    If auxiliary information is included, the value of \code{nu0.omega2} 
+    will be fixed to the default.
     The default is \code{10}.
   }
 
@@ -702,6 +723,14 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   is identified after either of the above standardization, where
   \eqn{\delta_0}{delta_0} and \eqn{\zeta_0}{zeta_0} denote the
   intercepts.
+  
+  When using the auxiliary data functionality, the following objects are included:
+
+  \item{aux}{logical value indicating whether estimation incorporates auxiliary moments
+  }
+  
+  \item{nh}{integer count of the number of auxiliary moments
+  }
 }
 
 \references{
