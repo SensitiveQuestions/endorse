@@ -86,13 +86,13 @@ endorse <- function(Y,
   # group (a vector identifying the groups for which auxiliary info is available), and 
   # prediction.unit (a vector identifying the units nested within groups for which prediction is desired)
   
-  if (aux.check == TRUE) {
+  if (aux.check) {
     
     formula.village <- as.formula(paste0("~-1 + factor(", group, ")"))    
     
     nu0.omega2 <- 10
     
-    mu.kappa <- matrix(qt(p = h, df = 10))
+    mu.kappa <- matrix(qt(p = h, df = 10, lower.tail = FALSE))
     
     precision.kappa <- 100000
     
