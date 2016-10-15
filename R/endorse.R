@@ -93,7 +93,7 @@ endorse <- function(Y,
     
     nu0.omega2 <- 10
     
-    mu.kappa <- matrix(qt(p = h, df = 10, lower.tail = FALSE))
+    mu.kappa <- matrix(qt(p = h, df = 10))
     
     precision.kappa <- 100000
     
