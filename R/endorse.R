@@ -88,8 +88,7 @@ endorse <- function(Y,
   
   if (aux.check == TRUE) {
     
-    vil.formula <- formula( ~ -1 + factor(group))
-    formula.village <- vil.formula    
+    formula.village <- as.formula(paste0("~-1 + factor(", group, ")"))    
     
     nu0.omega2 <- 10
     
