@@ -79,12 +79,11 @@ endorse <- function(Y,
   var.names.indiv <- colnames(cov.mat)
 
   # auxiliary data check
-  aux.check <- !(is.null(h) & is.null(group)) #aux.check <- !(is.null(h) & is.null(group) & is.null(prediction.unit))
+  aux.check <- !(is.null(h) & is.null(group))
   
   # auxiliary data functionality
   # requires h (vector of auxiliary info), 
-  # group (a vector identifying the groups for which auxiliary info is available), and 
-  # prediction.unit (a vector identifying the units nested within groups for which prediction is desired)
+  # group (a vector identifying the groups for which auxiliary info is available)
   
   if (aux.check) {
     
@@ -92,7 +91,9 @@ endorse <- function(Y,
     
     nu0.omega2 <- 10
     
-    mu.kappa <- matrix(qt(p = h, df = 10, lower.tail = FALSE))
+    s0.omega2 <- 1
+    
+    mu.kappa <- matrix(qt(p = h, df = 10))
     
     precision.kappa <- 100000
     
