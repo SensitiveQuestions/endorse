@@ -51,9 +51,9 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   \item{data.village}{data frame containing the village-level variables.
     The cases must be complete, i.e., no \code{NA}'s are allowed. If 
     auxiliary information is included, the data frame should include only
-    a unique identifier for each unit at which prediction is desired. The
-    package does not currently support the inclusion of covariates in 
-    models with auxiliary information.
+    the unique group identifier and the unique identifier for the units at 
+    which prediction is desired. The package does not currently support 
+    the inclusion of covariates in models with auxiliary information.
   }
 
   \item{village}{character.  The variable name of the village indicator
