@@ -40,6 +40,8 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
     control observations while each of the other variables should
     correspond to each endorser. \code{treat} should be supplied if
     only one variable name is provided for a question in this argument.
+    If auxiliary information is included, it is assumed that \code{Y} is 
+    coded such that higher values indicate more of the sensitive trait.
   }
 
   \item{data}{data frame containing the individual-level variables.
@@ -49,7 +51,9 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   \item{data.village}{data frame containing the village-level variables.
     The cases must be complete, i.e., no \code{NA}'s are allowed. If 
     auxiliary information is included, the data frame should include only
-    a unique identifier for each unit for which prediction is desired.
+    a unique identifier for each unit at which prediction is desired. The
+    package does not currently support the inclusion of covariates in 
+    models with auxiliary information.
   }
 
   \item{village}{character.  The variable name of the village indicator
@@ -101,11 +105,13 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   
   \item{h}{Auxiliary data functionality. Optional named numeric vector with 
   length equal to number of groups. Names correspond to group labels and 
-  values correspond to auxiliary moments.
+  values correspond to auxiliary moments (i.e. to the known share
+  of the sensitive trait at the group level).
   }
   
-  \item{group}{Auxiliary data functionality. Optional character vector of 
-  group labels with length equal to number of observations.
+  \item{group}{Auxiliary data functionality. Optional character string.  
+  The variable name of the group indicator in the individual-level data 
+  (e.g. \code{group = "county"}).
   }
 
   \item{x.start}{starting values for the ideal points vector \eqn{x}. If
@@ -336,6 +342,8 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
   \item{s0.omega2}{scalar. The scale of the independent scaled
     inverse- chi-squared    
     prior for the variance parameter in the support parameter model.
+    If auxiliary information is included, the value of \code{s0.omega2} 
+    will be fixed to the default.
     The default is \code{1}.
   }
 
