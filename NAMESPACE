@@ -5,3 +5,9 @@ import(coda)
 export(endorse,GeoCount,GeoId)
 
 export(endorse.plot)
+
+importFrom("grDevices", "grey", "rgb")
+importFrom("graphics", "barplot")
+importFrom("stats", "as.formula", "complete.cases", "model.matrix",
+           "qt")
+importFrom("utils", "packageDescription")
