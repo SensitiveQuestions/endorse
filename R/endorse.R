@@ -608,7 +608,7 @@ endorse <- function(Y,
 	     sig2Last = double(1),
              rho2Last = double(1),
              accept.ratio = double(J),
-             package = "endorse")
+             PACKAGE = "endorse")
 
   seedStore <- .Random.seed
 
