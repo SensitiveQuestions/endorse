@@ -7,4 +7,4 @@ version      date  description
 1.4.0    04/28/13  Add the varying-lambda hierarchical model
 1.4.1    05/03/14  Change the default options; fix typos in manual
 1.5.0    10/22/16  Add the auxiliary information model
-1.5.1    03/13/17  Fix errors due to newer version of R
+1.5.1    03/18/17  Fix errors due to newer version of R
