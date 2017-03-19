@@ -540,7 +540,7 @@ endorse <- function(Y,
 
   printout <- floor( (MCMC - burn) / thin )
 
-  temp <- .C("R2endorse",
+  temp <- .Call("R2endorse",
              as.integer(response),
              as.integer(endorse),
              as.double(cov.mat),
