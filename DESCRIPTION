@@ -1,6 +1,6 @@
 Package: endorse
-Version: 1.5.1
-Date: 2017-3-19
+Version: 1.5.2
+Date: 2017-4-18
 Title: Bayesian Measurement Models for Analyzing Endorsement Experiments
 Authors@R: c(person("Yuki", "Shiraito", role = c("aut","cre"), email = "shiraito@princeton.edu"),
 	     person("Kosuke", "Imai", role = "aut", email = "kimai@princeton.edu"),
@@ -8,7 +8,7 @@ Authors@R: c(person("Yuki", "Shiraito", role = c("aut","cre"), email = "shiraito
 Author: Yuki Shiraito [aut, cre], Kosuke Imai [aut], Bryn Rosenfeld [ctb]
 Maintainer: Yuki Shiraito <shiraito@princeton.edu>
 Depends: coda, utils
-Description: Fit the hierarchical and non-hierarchical Bayesian measurement models proposed by Bullock, Imai, and Shapiro (2011) <DOI:https://doi.org/10.1093/pan/mpr031> to analyze endorsement experiments.  Endorsement experiments are a survey methodology for eliciting truthful responses to sensitive questions.  This methodology is helpful when measuring support for socially sensitive political actors such as militant groups.  The model is fitted with a Markov chain Monte Carlo algorithm and produces the output containing draws from the posterior distribution. 
+Description: Fit the hierarchical and non-hierarchical Bayesian measurement models proposed by Bullock, Imai, and Shapiro (2011) <DOI:10.1093/pan/mpr031> to analyze endorsement experiments.  Endorsement experiments are a survey methodology for eliciting truthful responses to sensitive questions.  This methodology is helpful when measuring support for socially sensitive political actors such as militant groups.  The model is fitted with a Markov chain Monte Carlo algorithm and produces the output containing draws from the posterior distribution. 
 LazyLoad: yes
 LazyData: yes
 License: GPL (>=2)

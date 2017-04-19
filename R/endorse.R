@@ -540,7 +540,7 @@ endorse <- function(Y,
 
   printout <- floor( (MCMC - burn) / thin )
 
-  temp <- .Call("R2endorse",
+  temp <- .C("R2endorse",
              as.integer(response),
              as.integer(endorse),
              as.double(cov.mat),
@@ -608,7 +608,8 @@ endorse <- function(Y,
 	     sig2Last = double(1),
              rho2Last = double(1),
              accept.ratio = double(J),
-             PACKAGE = "endorse")
+             PACKAGE = "endorse"
+             )
 
   seedStore <- .Random.seed
 

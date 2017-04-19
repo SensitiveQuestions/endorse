@@ -22,16 +22,16 @@ GeoId <- function (x, y, distance, x.latitude = "latitude",
     y.lat <- eval(parse(text = paste("y$", y.latitude, sep = "")))
     
     
-    temp <- .Call("R2GeoId",
-                  as.numeric(x.lon),
-                  as.numeric(x.lat),
-                  as.integer(n.x),
-                  as.numeric(y.lon),
-                  as.numeric(y.lat),
-                  as.integer(n.y),
-                  as.numeric(distance),
-                  Store.count = integer(n.x),
-                  PACKAGE = "endorse")
+    temp <- .C("R2GeoId",
+               as.numeric(x.lon),
+               as.numeric(x.lat),
+               as.integer(n.x),
+               as.numeric(y.lon),
+               as.numeric(y.lat),
+               as.integer(n.y),
+               as.numeric(distance),
+               Store.count = integer(n.x),
+               PACKAGE = "endorse")
   
     res <- as.double(temp$Store.count)
   

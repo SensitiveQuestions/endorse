@@ -8,3 +8,4 @@ version      date  description
 1.4.1    05/03/14  Change the default options; fix typos in manual
 1.5.0    10/22/16  Add the auxiliary information model
 1.5.1    03/19/17  Fix CRAN notes
+1.5.2    04/18/17  Bug fix (registration of native routines)
