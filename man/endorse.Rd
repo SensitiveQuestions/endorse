@@ -668,7 +668,8 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
 }
 
 \value{
-  A list containing the following elements:
+  An object of class "endorse", which is a list containing the following
+  elements:
 
   \item{beta}{an mcmc object. A sample from the posterior distribution
     of \eqn{\alpha}{alpha} and \eqn{\beta}{beta}.

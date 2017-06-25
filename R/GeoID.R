@@ -10,6 +10,10 @@ GeoId <- function (x, y, distance, x.latitude = "latitude",
         stop(paste("Variable", y.latitude, "does not exist in y"))
     if (!(y.longitude %in% colnames(y)))
         stop(paste("Variable", y.longitude, "does not exist in y"))
+
+    if (nrow(x) > 1) {
+        warning("Multiple points are specified by 'x'.  Only the first row is used.")
+    }
     
     
     n.x <- nrow(x)
