@@ -2,12 +2,14 @@ useDynLib(endorse, .registration=TRUE)
 
 import(coda)
 
-export(endorse,GeoCount,GeoId)
-
+export(endorse,predict.endorse)
+export(GeoCount,GeoId)
 export(endorse.plot)
+
+S3method(predict,endorse)
 
 importFrom("grDevices", "grey", "rgb")
 importFrom("graphics", "barplot")
 importFrom("stats", "as.formula", "complete.cases", "model.matrix",
-           "qt")
+           "qt", "pnorm")
 importFrom("utils", "packageDescription")

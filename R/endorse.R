@@ -811,5 +811,60 @@ endorse <- function(Y,
     res$nh <- length(h)
   }
 
+  class(res) <- "endorse"
+
   return(res)
 }  
+
+
+predict.endorse <- function(object, newdata, type = c("linear.s", "prob.support"), standardize = TRUE) {
+
+    if (object$hierarchical) {
+        stop("The predict method for 'endorse' fits is not available for hierarchical models.")
+    } else if (!object$identical.lambda) {
+        stop("The predict method for 'endorse' fits is not available for varying-lambda models.")
+    }
+    
+    type <- match.arg(type)
+    
+     if (object$identical.lambda && type == "linear.s") {
+        cat("Predict the mean of support parameters\n")
+    } else if (object$identical.lambda && type == "prob.support") {
+        cat("Predict the probability of positive support\n")
+    }
+
+    if (missing(newdata)) {
+        cov.mat <- object$model.matrix.indiv
+    } else {
+        cov.mat <- model.matrix(object$formula.indiv, newdata)
+    }
+
+    if (object$identical.lambda) {
+        K <- ncol(object$omega2)
+        num.MCMC <- nrow(object$omega2)
+        dim.Z <- ncol(cov.mat)
+
+        out <- matrix(NA, nrow = num.MCMC, ncol = K)
+
+        for (k in 1:K) {
+            tmp <- object$lambda[, ((k - 1) * dim.Z + 1):(k * dim.Z)] %*% t(cov.mat)
+
+            if (type == "linear.s") {
+                if (standardize) tmp <- tmp / sqrt(object$omega2[, k])
+                tmp <- rowMeans(tmp)
+                out[, k] <- tmp
+            } else if (type == "prob.support") {
+                tmp <- tmp / sqrt(object$omega2[, k])
+                tmp <- rowMeans(pnorm(tmp))
+                out[, k] <- tmp
+            }
+        }
+    }
+
+    colnames(out) <- paste("group", 1:K, sep = ".")
+
+    out <- as.mcmc(out)
+
+    return(out)
+    
+}

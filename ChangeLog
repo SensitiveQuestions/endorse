@@ -9,3 +9,4 @@ version      date  description
 1.5.0    10/22/16  Add the auxiliary information model
 1.5.1    03/19/17  Fix CRAN notes
 1.5.2    04/18/17  Bug fix (registration of native routines)
+1.6.0    06/25/17  Add predict method for endorse output
