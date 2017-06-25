@@ -1,27 +1,27 @@
 \name{GeoCount}
 \alias{GeoCount}
 \title{
-  Counting Violent Incidents around Villages
+  Counting Incidents around Points
 }
 \description{
-  This function calculates the number of violent incidents within a specified
-  distance around specified points (villages).
+  This function calculates the number of incidents (e.g., violent
+  events) within a specified distance around specified points (e.g.,
+  villages).
 }
 \usage{
 GeoCount(x, y, distance, x.latitude = "latitude",
-                      x.longitude = "longitude", y.latitude = "latitude",
-                      y.longitude = "longitude")
+         x.longitude = "longitude", y.latitude = "latitude",
+         y.longitude = "longitude")
 }
 \arguments{
 
- \item{x}{data frame containing the longitude and the latitude of villages.
+ \item{x}{data frame containing the longitude and the latitude of points.
  }
 
- \item{y}{data frame containing the longitude and the latitude of violent
-   incidents.
+ \item{y}{data frame containing the longitude and the latitude of incidents.
  }
 
- \item{distance}{numeric. The distance from villages in kilometers.
+ \item{distance}{numeric. The distance from points in kilometers.
  }
 
  \item{x.latitude}{character.  The variable name for the latitude in \code{x}.

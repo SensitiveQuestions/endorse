@@ -12,29 +12,36 @@
 }
 \usage{
 endorse(Y, data, data.village = NA, village = NA, treat = NA,
-        na.strings = 99, identical.lambda = TRUE, covariates = FALSE,
-        formula.indiv = NA, hierarchical = FALSE, formula.village = NA,
-        h = NULL, group = NULL, x.start = 0, s.start = 0, beta.start = 1,
-        tau.start = NA, lambda.start = 0, omega2.start = .1,
-        theta.start = 0, phi2.start = .1, kappa.start = 0, psi2.start = 1,
-        delta.start = 0, zeta.start = 0, rho2.start = 1, mu.beta = 0,
-        mu.x = 0, mu.theta = 0, mu.kappa = 0, mu.delta = 0, mu.zeta = 0,
-        precision.beta = 0.04, precision.x = 1, precision.theta = 0.04,
-        precision.kappa = 0.04, precision.delta = 0.04,
-        precision.zeta = 0.04, s0.omega2= 1, nu0.omega2 = 10,
-        s0.phi2 = 1, nu0.phi2 = 10, s0.psi2 = 1, nu0.psi2 = 10,
-        s0.sig2 = 1, nu0.sig2 = 400, s0.rho2 = 1, nu0.rho2 = 10,
-        MCMC = 20000, burn = 1000, thin = 1,  mh = TRUE, prop = 0.001,
-        x.sd = TRUE, tau.out = FALSE, s.out = FALSE, omega2.out = TRUE,
+        na.strings = 99, identical.lambda = TRUE,
+        covariates = FALSE, formula.indiv = NA,
+        hierarchical = FALSE, formula.village = NA, h = NULL,
+        group = NULL, x.start = 0, s.start = 0,
+        beta.start = 1, tau.start = NA, lambda.start = 0,
+        omega2.start = .1, theta.start = 0, phi2.start = .1,
+        kappa.start = 0, psi2.start = 1, delta.start = 0,
+        zeta.start = 0, rho2.start = 1, mu.beta = 0, mu.x = 0,
+        mu.theta = 0, mu.kappa = 0, mu.delta = 0, mu.zeta = 0,
+        precision.beta = 0.04, precision.x = 1,
+        precision.theta = 0.04, precision.kappa = 0.04,
+        precision.delta = 0.04, precision.zeta = 0.04,
+        s0.omega2= 1, nu0.omega2 = 10, s0.phi2 = 1,
+        nu0.phi2 = 10, s0.psi2 = 1, nu0.psi2 = 10,
+        s0.sig2 = 1, nu0.sig2 = 400, s0.rho2 = 1,
+        nu0.rho2 = 10, MCMC = 20000, burn = 1000, thin = 1,
+        mh = TRUE, prop = 0.001, x.sd = TRUE,
+        tau.out = FALSE, s.out = FALSE, omega2.out = TRUE,
         phi2.out = TRUE, psi2.out = TRUE, verbose = TRUE,
-        seed.store = FALSE, update = FALSE, update.start = NULL)
+        seed.store = FALSE, update = FALSE,
+        update.start = NULL)
 }
 
 \arguments{
 
   \item{Y}{a list of the variable names for the responses. It should
     take the following form:
-    \code{list(Q1 = c("varnameQ1.1", ...), Q2 = c("varnameQ2.1", ...), ...)}.
+    
+    \code{list(Q1 = c("varnameQ1.1", "varnameQ1.2", ...),...)}.
+
     If \code{treat} is \code{NA}, the first
     variable for each question should be the responses of the
     control observations while each of the other variables should
@@ -100,7 +107,7 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
 
   \item{formula.village}{a symbolic description specifying the village level 
     covariates for the support parameter and the ideal points. The formula
-    should be one-sided, e.g. \code{ ~ V1 + V2}.
+    should be one-sided.
   }
   
   \item{h}{Auxiliary data functionality. Optional named numeric vector with 
@@ -174,7 +181,7 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
 
   \item{omega2.start}{starting values for the variance of the support
     parameters, \eqn{\omega_{jk}^{2}}{omega_{jk}^2}.
-    If \code{omega2.start} is set to a scalar, the starting values for
+    If set to a scalar, the starting values for
     \eqn{omega_{jk}^{2}}{omega_{jk}^2} will be the diagonal matrix with
     the diagonal elements set to the scalar.
     If \code{omega2.start} is set to a matrix, the number of rows should
@@ -668,10 +675,10 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
 }
 
 \value{
-  An object of class "endorse", which is a list containing the following
+  An object of class \code{"endorse"}, which is a list containing the following
   elements:
 
-  \item{beta}{an mcmc object. A sample from the posterior distribution
+  \item{beta}{an \code{"mcmc"} object. A sample from the posterior distribution
     of \eqn{\alpha}{alpha} and \eqn{\beta}{beta}.
   }
 
@@ -683,7 +690,9 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
 
   \item{s}{If \code{s.out = TRUE}, an mcmc object that contains a sample
     from the posterior distribution of \eqn{s_{ijk}}{s_ijk}.  Variable
-    names are \code{s(observation index)(question index)}.
+    names are:
+
+    \code{s(observation id)(question id)}.
   }
 
   \item{delta}{If \code{covariates = TRUE}, an mcmc object that contains
@@ -696,7 +705,8 @@ endorse(Y, data, data.village = NA, village = NA, treat = NA,
 
   \item{lambda}{an mcmc object. A sample from the posterior distribution
     of \eqn{\lambda}{lambda}.  Variable names are:
-    \code{lambda(question index)(group index).(covariate index)}.
+    
+    \code{lambda(question id)(group id).(covariate id)}.
   }
 
   \item{theta}{an mcmc object. A sample from the posterior distribution
@@ -769,13 +779,15 @@ endorse.out <- endorse(Y = Y, data = pakistan, identical.lambda = FALSE,
 ## Varying-lambda non-hierarchical model with covariates
 indiv.covariates <- formula( ~ female + rural)
 endorse.out <- endorse(Y = Y, data = pakistan, identical.lambda = FALSE,
-                       covariates = TRUE, formula.indiv = indiv.covariates,
+                       covariates = TRUE,
+                       formula.indiv = indiv.covariates,
                        hierarchical = FALSE)
 
 ## Common-lambda non-hierarchical model with covariates
 indiv.covariates <- formula( ~ female + rural)
 endorse.out <- endorse(Y = Y, data = pakistan, identical.lambda = TRUE,
-                       covariates = TRUE, formula.indiv = indiv.covariates,
+                       covariates = TRUE,
+                       formula.indiv = indiv.covariates,
                        hierarchical = FALSE)
 
 ## Varying-lambda hierarchical model without covariates

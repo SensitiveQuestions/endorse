@@ -817,7 +817,7 @@ endorse <- function(Y,
 }  
 
 
-predict.endorse <- function(object, newdata, type = c("linear.s", "prob.support"), standardize = TRUE, ...) {
+predict.endorse <- function(object, newdata, type = c("prob.support", "linear.s"), standardize = TRUE, ...) {
 
     if (object$hierarchical) {
         stop("The predict method for 'endorse' fits is not available for hierarchical models.")

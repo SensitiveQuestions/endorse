@@ -8,7 +8,8 @@
   endorsement experiment.
 }
 \usage{
-endorse.plot(Y, data, scale, dk = 98, ra = 99, yaxis = NULL, col.seq = NA)
+endorse.plot(Y, data, scale, dk = 98, ra = 99, yaxis = NULL,
+             col.seq = NA)
 }
 \arguments{
 
