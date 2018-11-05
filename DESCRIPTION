@@ -3,7 +3,7 @@ Version: 1.6.0
 Date: 2017-6-25
 Title: Bayesian Measurement Models for Analyzing Endorsement Experiments
 Authors@R: c(person("Yuki", "Shiraito", role = c("aut","cre"), email = "shiraito@princeton.edu"),
-	     person("Kosuke", "Imai", role = "aut", email = "kimai@princeton.edu"),
+	     person("Kosuke", "Imai", role = "aut", email = "imai@harvard.edu"),
 	     person("Bryn", "Rosenfeld", role = "ctb", email = "brosenfe@usc.edu"))
 Author: Yuki Shiraito [aut, cre], Kosuke Imai [aut], Bryn Rosenfeld [ctb]
 Maintainer: Yuki Shiraito <shiraito@princeton.edu>
@@ -12,4 +12,4 @@ Description: Fit the hierarchical and non-hierarchical Bayesian measurement mode
 LazyLoad: yes
 LazyData: yes
 License: GPL (>=2)
-URL: http://imai.princeton.edu/software/endorse.html
+URL: https://github.com/SensitiveQuestions/endorse/
