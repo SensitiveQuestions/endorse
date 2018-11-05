@@ -63,10 +63,10 @@ endorse.plot(Y = Y, data = pakistan, scale = 5)
 }
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu}
+  Yuki Shiraito, Department of Political Science, University of Michigan
+  \email{shiraito@umich.edu}.
 
-  Yuki Shiraito, Department of Politics, Princeton University
-  \email{shiraito@Princeton.Edu}.
+  Kosuke Imai, Department of Government and Statistics, Harvard University
+  \email{Imai@Harvard.Edu}, \url{https://imai.fas.harvard.edu/}
 }
 

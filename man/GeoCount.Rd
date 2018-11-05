@@ -39,10 +39,7 @@ GeoCount(x, y, distance, x.latitude = "latitude",
 }
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu}
-
-  Yuki Shiraito, Department of Politics, Princeton University
-  \email{shiraito@Princeton.Edu}.
+  Yuki Shiraito, Department of Political Science, University of Michigan
+  \email{shiraito@umich.edu}.
 }
 
