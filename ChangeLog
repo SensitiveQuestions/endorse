@@ -10,3 +10,5 @@ version      date  description
 1.5.1    03/19/17  Fix CRAN notes
 1.5.2    04/18/17  Bug fix (registration of native routines)
 1.6.0    06/25/17  Add predict method for endorse output
+1.6.1    11/04/18  Change contact information
+1.6.2    05/02/22  Adapt Fortrun calls to the USE_FC_LEN_T default

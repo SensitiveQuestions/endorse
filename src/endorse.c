@@ -436,7 +436,7 @@ void R2endorse(/*   Data   */
   }
 
   itemp = 0;
-  if (identical_lambda * hierarchical) {
+  if (identical_lambda && hierarchical) {
     for (n = 0; n < n_act; n++)
       for (m = 0; m < n_vil_dim; m++)
 	Mu_kappa[n][m] = dmu_kappa[itemp++];
@@ -654,7 +654,7 @@ void R2endorse(/*   Data   */
 
 
       /** print acceptance ratios  **/
-      if (mh * verbose) {
+      if (mh && verbose) {
 	if (main_loop == itempP)
 	  Rprintf("      Cutpoints of question %1d: %4g\n",
 		  (j + 1), accept_ratio[j]);
