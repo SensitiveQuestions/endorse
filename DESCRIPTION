@@ -1,6 +1,6 @@
 Package: endorse
-Version: 1.6.0
-Date: 2017-6-25
+Version: 1.6.2
+Date: 2022-5-2
 Title: Bayesian Measurement Models for Analyzing Endorsement Experiments
 Authors@R: c(person("Yuki", "Shiraito", role = c("aut","cre"), email = "shiraito@umich.edu"),
 	     person("Kosuke", "Imai", role = "aut", email = "imai@harvard.edu"),
